@@ -1,0 +1,267 @@
+{
+  "collection": {
+    "version": "1.0",
+    "links": [],
+    "items": [
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/1",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Agile"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/1/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/2",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Architecture"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/2/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/3",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Cloud"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/3/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/4",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Database"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/4/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/5",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Design"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/5/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/6",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Devops"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/6/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/7",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Fun"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/7/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/8",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Microsoft"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/8/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/9",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Misc"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/9/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/10",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Mobile"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/10/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/11",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Programming Languages"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/11/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/12",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Security"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/12/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/13",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Techniques"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/13/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/14",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Testing"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/14/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/15",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Tools"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/15/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/16",
+        "data": [
+          {
+            "name": "Title",
+            "value": "UX"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/16/sessions"
+          }
+        ]
+      },
+      {
+        "href": "https://conferenceapi.azurewebsites.net/topic/17",
+        "data": [
+          {
+            "name": "Title",
+            "value": "Web"
+          }
+        ],
+        "links": [
+          {
+            "rel": "http://tavis.net/rels/sessions",
+            "href": "https://conferenceapi.azurewebsites.net/topic/17/sessions"
+          }
+        ]
+      }
+    ],
+    "queries": [],
+    "template": {
+      "data": []
+    }
+  }
+}
