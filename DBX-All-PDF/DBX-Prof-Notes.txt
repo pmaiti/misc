@@ -1,0 +1,42 @@
+https://github.com/derar-alhussein/Databricks-Certified-Data-Engineer-Professional
+
+https://docs.databricks.com/en/security/auth-authz/access-control/cluster-acl.html
+https://docs.databricks.com/en/security/auth-authz/access-control/jobs-acl.html#:~:text=Run%20now,x
+https://docs.databricks.com/en/security/auth-authz/access-control/secret-acl.html#:~:text=The%20secret%20access,secrets%20are%20available
+https://docs.databricks.com/en/security/auth-authz/access-control/workspace-acl.html#:~:text=You%20can%20assign%20five%20permission%20levels%20to%20notebooks%3A%20No%20Permissions%2C%20Can%20Read%2C%20Can%20Run%2C%20Can%20Edit%2C%20and%20Can%20Manage.%20The%20table%20lists%20the%20abilities%20for%20each%20permission
+https://docs.databricks.com/en/security/auth-authz/access-control/cluster-acl.html#cluster-level-permissions
+https://docs.databricks.com/en/security/auth-authz/access-control/index.html
+
+https://docs.databricks.com/en/delta/clone.html
+https://docs.databricks.com/en/sql/language-manual/delta-clone.html
+
+https://docs.databricks.com/en/optimizations/aqe.html#:~:text=AQE%20applies%20to,Non%2Dstreaming
+
+https://docs.databricks.com/en/reference/api.html
+https://docs.databricks.com/en/dev-tools/cli/
+
+https://freeformatter.com/cron-expression-generator-quartz.html
+0 0 0 ? * * *
+Seconds/Minutes/Hours/DayofMonth/Month/DayOfWeek/Year
+
+DBX-token: dapi11d73fda3e9fda1dd4a7dd93c6887579-3
+
+vim ~/.netrc
+
+machine adb-6373332701311979.19.azuredatabricks.net
+login token
+password dapi11d73fda3e9fda1dd4a7dd93c6887579-3
+
+esc + :wq
+:q
+cat ~/.netrc
+
+curl --netrc -X GET https://adb-6373332701311979.19.azuredatabricks.net/api/2.0/clusters/list
+sudo apt-get install jq
+
+curl --netrc -X GET \
+https://dbc-a1b2345c-d6e7.cloud.databricks.com/api/2.0/groups/list-members \
+--data '{ "group_name": "reporting-department" }' \
+| jq .
+
+https://learn.microsoft.com/en-us/Azure/Databricks/data-governance/unity-catalog/get-started#example-notebook

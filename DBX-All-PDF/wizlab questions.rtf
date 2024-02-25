@@ -1,0 +1,330 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset2 Symbol;}}
+{\colortbl ;\red0\green0\blue255;}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 Q1. Domain: Databricks Lakehouse Platform\par
+A Data Engineer has run a command in Databricks notebook interactively. The notebook command has produced a large result dataset as command output.\par
+Assuming that the default workspace configuration is being used, which of the following locations stores the output of the notebook command run by a data engineer?\par
+A. Databricks Filestore\par
+B. Databricks Control Plane\par
+C. System Data storage area under Databricks workspace root storage Instance in customer cloud account\par
+D. DFBS Root storage area under Databricks workspace root storage Instance in customer cloud account\par
+\par
+Explanation:\par
+Correct Answer: C\par
+The output of Databricks notebook commands is stored by default in various locations based on the size of the resultant output and how the notebook is run.\par
+When a notebook is run interactively by clicking the run button and the output of the notebook command is a large result set, the output will be stored in the workspace's root storage instance. This root storage instance will be a customer could storage instance like S3 in AWS, Azure storage instance In Azure, etc., based on the cloud subscription the Databricks workspace is associated with. Databricks Automatically creates the root storage instance in the storage account of that subscribed cloud offering. The root storage instance contains workspace system data and DBFS root data. Larger results of interactive Databricks notebooks are stored in the workspace system data storage area, which is not directly accessible by users.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Databricks Filestore area is part of Databricks root storage. When a Databricks notebook is run interactively in the default configuration, the resultant binary objects like images and plots are stored in the Databricks Filestore area under DBFS.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. When a Databricks notebook is run interactively in the default configuration, Only the smaller or partial results (for presentation in UI) are stored in the control plane.\par
+{\pntext\f1\'B7\tab}Option C is correct. When a Databricks notebook is run interactively in the default configuration, larger or full result sets are stored in system data storage under the root customer cloud storage of the workspace.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. In the default configuration, the DBFS root storage location contains only the binary objects like Images, Graphs, Plots, etc. inside the Filestore area under it. Larger results are not stored there.\par
+
+\pard\sa200\sl276\slmult1 References:\par
+
+\pard\sa200\sl276\slmult1 {{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/en/administration-guide/workspace/settings/storage.html }}{\fldrslt{https://docs.databricks.com/en/administration-guide/workspace/settings/storage.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q2. Domain: Databricks Lakehouse Platform\par
+A Databricks Workspace Administrator has created several Cluster policies to prevent the data engineers from creating clusters. He has implemented Access Control Lists to restrict them from viewing the clusters to which they don't have access. The requirement is to let the end users select and use the clusters associated with them. Despite these settings, a specific data engineer has reported that she can still create a fully configurable cluster in the Databricks workspace. What might be the possible reason for this?\par
+A. The Data Engineer has been provided with workspace access permission by Admin.\par
+B. The Data Engineer has been provided with Allow unrestricted cluster creation permission by Admin.\par
+C. The Data Engineer has been provided with Cluster-Level 'Can Manage' permission by Admin.\par
+D. The Data Engineer has been provided with Cluster-Level 'Can Create' permission by Admin.\par
+\par
+Explanation:\par
+Correct Answer: B\par
+There can be two types of high-level cluster permission given to users: Allow unrestricted cluster creation and cluster-level permission. Suppose the Allow Unrestricted Cluster Creation checkbox is selected for a user from the Admin console>Users tab. In that case, the user will be entitled to create a cluster using unrestricted policies to enable the creation of a fully configurable cluster.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. When workspace access is granted to a user or service principal, they can access the Data Science & Engineering and Databricks Machine Learning persona-based environments. It is granted by default and is not related to cluster creation.\par
+{\pntext\f1\'B7\tab}Option B is correct. When Allow Unrestricted Cluster Creation is granted to a user or service principal by Admin from the admin console, they can create clusters.\par
+{\pntext\f1\'B7\tab}Option C is Incorrect. There are four types of permission levels under cluster-level permission. These are 'Can Manage', 'Can Restart', 'Can Attached to' and 'No Permission'. All these permission dictates user access to existing clusters. A user-provided with 'Can Manage' permission can Start, Restart, Edit and Manage permission of existing clusters But cannot create a new cluster.\par
+{\pntext\f1\'B7\tab}Option D is Incorrect. There are four types under cluster-level permission. They are 'Can Manage', 'Can Restart', 'Can Attached to' and 'No Permission'. 'Can Create' is not a valid permission name under Cluster-level permission types.\par
+
+\pard\sa200\sl276\slmult1 References:\par
+
+\pard\sa200\sl276\slmult1 {{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/security/access-control/cluster-acl.html }}{\fldrslt{https://docs.databricks.com/security/access-control/cluster-acl.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q3. Domain: Databricks Lakehouse Platform\par
+Which of the following statements is not true if serverless compute for Databricks SQL is enabled to make use of a serverless Data plane?\par
+A. A serverless Data plane has natural isolation because it is not a shared resource for multiple customers.\par
+B. The Classic and Pro Databricks SQL warehouses continue to be on the Classic Data plane instead of the Serverless Data Plane even after enabling Serverless compute.\par
+C. Serverless compute runs within a workspace network boundary with several layers of security to isolate various Databricks user workspaces, to protect data within the serverless Data plane.\par
+D. Serverless compute is only effective for serverless SQL warehouses. Enabling this feature will not have any effect on Databricks runtime clusters in Data Science and Engineering workspace.\par
+\par
+Explanation:\par
+Correct Answer: A\par
+There are two types of Data planes- Classic Data plane and Serverless Data plane. If serverless compute is enabled for Databricks SQL the compute resources for Databricks serverless SQL warehouses will be on a serverless data plane. But all other compute resources for notebooks, jobs, pro and classic Databricks SQL warehouses will still be on the Classic data plane. A Serverless Data plane is a shared resource among multiple Databricks customers. Hence, option A is not true, which makes this option the correct choice.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is correct. The Serverless data plane is a shared resource in the cloud account of Databricks for multiple Databricks customers. The Classic data plane has natural isolation as it runs in each customer's cloud account. A Classic data plane is not a shared resource for multiple customers. The statement here matches the description of the Classic Data plane, not the Serverless Data plane. Hence, the statement is false.\par
+{\pntext\f1\'B7\tab}Option B is Incorrect. If Serverless compute for Databricks SQL is enabled, the compute resources for the Serverless SQL warehouse will be in the Serverless Data plane. The compute resources for all other components like notebooks, jobs, and classic and pro-Databricks SQL warehouses still reside in the Classic data plane in the customer account. Hence, the statement is true.\par
+{\pntext\f1\'B7\tab}Option C is Incorrect. A serverless data plane is a resource, shared across multiple Databricks customers. To implement security and isolation for user data within that shared serverless Data plane, serverless Compute runs with various security layers within a specific network boundary of the workspace. Hence, the statement is true.\par
+{\pntext\f1\'B7\tab}Option D is Incorrect. The serverless compute feature is only applicable in Databricks SQL It is not effective on how Databricks Runtime clusters work with notebooks and jobs in the Data Science and Engineering workspace or Databricks Machine Learning workspace environments. Databricks Runtime clusters always run in the Classic data plane in the customer cloud account. Hence, the statement is true.\par
+
+\pard\sa200\sl276\slmult1 References:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/getting-started/overview.html#databricks-architecture-overview }}{\fldrslt{https://docs.databricks.com/getting-started/overview.html#databricks-architecture-overview\ul0\cf0}}}}\f0\fs22\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/serverless-compute/index.html }}{\fldrslt{https://docs.databricks.com/serverless-compute/index.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q4. Domain: Databricks Lakehouse Platform\par
+A junior data engineer has been asked to write a delta lake VACCUM command to remove all the data from a table named current_sales, which are deleted on or before 7 days. The junior data engineer has written the following code by retaining all the default settings of the VACCUM command.\par
+VACCUM current_sales.\par
+After the execution of the above command, it has been found that there is a discrepancy between the number of files estimated for deletion and the actual number of deleted files.\par
+The command failed to remove all the desired files. A senior Data Engineer has investigated and found the root cause of the issue.\par
+Which of the following would be the possible reason for this problem?\par
+A. The retention threshold is not set in the VACCUM command.\par
+B. The DRY RUN is not set in the VACCUM command.\par
+C. The OPTIMIZE command was not run before the VACCUM command.\par
+D. The data files which were not removed might still be used by some other queries.\par
+\par
+Explanation:\par
+Correct Answer: A\par
+VACCUM command in the delta table removes all the files not referred to by the delta table, surpassing the retention threshold period. In the default setup, the retention threshold is 7 days. That means files that are older than 7 days and are no longer referenced by a delta table will be the candidate for removal through the VACCUM command. In the requirement statement, it has been asked to remove files that are greater than and equal to 7 days.\par
+So, without modification of the default retention threshold, all the files older than 7 days will be removed but not the files which fall on the 7th day. This is a classic case of boundary value condition.\par
+To meet the criteria, the retention period should be modified to 6 days from the default 7 days, which will consider 7th days data files as candidates for removal through VACCUM.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is correct. The default retention threshold for the VACCUM command is 7 days. This will make the VACCUM command consider only the data files that are more than 7 days old. A proper retention threshold should also be set, which will include the 7th day's data files.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. DRY RUN is a parameter in the VACCUM command that returns a list of up to 1000 files to be deleted through the VACCUM command. If this property is set, then VACCUM doesn't delete any file. Hence, this option is not appropriate here.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. Delta Lake Optimize command is to improve the query speed. It changes how data is present in different files in the storage location by compacting smaller files into fewer and larger files. Running it before VACCUM will not affect the functionality of the VACCUM command itself.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. In the default configuration, there is a property spark.databricks.delta.retentionDurationCheck.enabled set to TRUE. This property ensures that no operations are performed on a specific table, which will take longer than the retention threshold period if the VACCUM command is to be performed on that table. Since the default retention period is 7 days, which is not sufficient for the requirement presented here, this property will not be adequately utilized.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/sql/language-manual/delta-vacuum.html }}{\fldrslt{https://docs.databricks.com/sql/language-manual/delta-vacuum.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q5. Domain: ELT with Spark SQL and Python\par
+A data engineer has created a new table in Databricks SQL named US_Health, which contains the health insurance-related data for US healthcare customers. After 6 months, due to a change in organization policy, it has become mandatory to include a table property in new tables or modify a table property in an existing table to indicate that the new or existing table contains Health Insurance Portability and Accountability Act (HIPAA) data.\par
+Which of the following solutions optimally fulfills the requirement successfully?\par
+A. Use 'create table as select' by selecting from the existing US_Health table. Add the following clause while creating the new table: COMMENT 'contains HIPAA'. Drop the old table. Rename the new table as the old table.\par
+B. Use 'create table as select' by selecting from the existing US_Health table. Add the following clause while creating the new table: TBLPROPERTIES ('COMMENT'='contains HIPAA'). Drop the old table. Rename the new table as the old table.\par
+C. Modify the existing table with the following code block: ALTER TABLE US_Health SET TBLPROPERTIES ('COMMENT'='contains HIPAA')\par
+D. Modify the existing table with the following code block: COMMENT ON TABLE US_Health IS 'contains HIPAA'\par
+\par
+Explanation:\par
+Correct Answer: D\par
+COMMENT ON command in Databricks SQL is used to set a comment on a schema, table, catalogue, share, recipient, or provider. While creating a new table, we can use the COMMENT "" clause to add the same comment. Here, the task is to optimally set the comment on the table about containing HIPAA data. Using option A, we can set the desired comment on the table. But it will involve creating a new table with a comment followed by dropping the existing table and renaming the new table as 'US_Health'. It contains several steps and will not be an optimized option.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option D represents the correct syntax to modify or add a comment on an existing table. This is the most optimal way of adding a comment on an already existing table.\par
+{\pntext\f1\'B7\tab}Option A is incorrect. Although the mentioned steps are syntactically correct and will fulfil the requirement, this option is optimized as it involves several steps to be performed.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. We cannot add a comment on the table level using TBLPROPERTIES.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. We cannot use an alter table to set a comment on table level using TBLPROPERTIES.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-comment.html#comment-on }}{\fldrslt{https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-comment.html#comment-on\ul0\cf0}}}}\f0\fs22\par
+\par
+Q6. Domain: ELT with Spark SQL and Python\par
+A Data Analyst wants to create a derived column month_first_date, which will contain the Ist date of the month for each date present in an existing column sales_date, using spark SQL.\par
+Which of the following functions should the data analyst use to directly produce the result?\par
+A. month\par
+B. dayofmonth\par
+C. months_between\par
+D. trunc\par
+\par
+Explanation:\par
+Correct Answer: D\par
+There are several date-related functions available in Spark SQL that help manipulate dates and their corresponding formats. In the problem statement, the first date of a month based on the month present in an existing date needs to be extracted. The trunc function provides this functionality out of the box. This function returns the date truncated to a unit specified in the function's second parameter. It can be written as trunc(sales_date, "Month") to fulfill the requirement. The rest of the option contains functions that will not produce the desired result.\par
+Option A is incorrect. The month function extracts the month of a given date as an integer. It will neither preserve the date format nor provide the first date of the month of a given date.\par
+Option B is incorrect. The dayofmonth function extracts the day of the month of a provided date as an integer. It does not satisfy the problem statement.\par
+Option C is incorrect. The months_between function takes 2 dates as a function parameter and returns the number of months between two dates.\par
+Option D is correct. The trunc function truncates a given Date at Year and Month units and returns the Date in "yyyy-MM-dd" format. Here, if we provide a month as the unit of truncate, it will truncate a given date to its first date of the month and will produce the desired output.\par
+Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://spark.apache.org/docs/latest/sql-ref-functions-builtin.html#date-and-timestamp-functions }}{\fldrslt{https://spark.apache.org/docs/latest/sql-ref-functions-builtin.html#date-and-timestamp-functions\ul0\cf0}}}}\f0\fs22\par
+\par
+Q7. Domain: ELT with Spark SQL and Python\par
+A data engineer is looking to create a data object that involves data from multiple other data entities. The data object will be used by users from different sessions and will be accessible as long as the application is alive.\par
+Which of the following data objects should be created by the data engineer?\par
+A. Temporary View\par
+B. Materialized View\par
+C. View\par
+D. Global Temporary View\par
+V right\par
+\par
+Explanation:\par
+Correct Answer: D\par
+Global Temporary Views are session-scoped and primarily meant to be shared across all the active sessions. It is kept alive till the application is not terminated. These are used as temporary tables and are stored in the global_temp database.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Temporary Views are session-scoped views. It is not active till the Application is active and gets terminated if the session that creates the view terminates.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. The result of these views is stored in a physical storage location. Hence, the name materialized views. These views are used to create updated and aggregated views of information without reprocessing the underlying tables. It gets updated along with ongoing changes. Materialized views will be sustained even after the application terminates.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. View is a data object created by referring to several other data objects which contain no physical data itself, but the query or the construct itself. A view continuously gets computed whenever it is called. The view definition will be stored even after the application is terminated.\par
+{\pntext\f1\'B7\tab}Option D is correct. As per the requirement, the data object should be accessible until the application terminates. This is exactly what Global Temporary Views are used for. These are session-scoped views that are alive as long as a single active session is available in the application, which keeps the application up and running.\par
+
+\pard\sa200\sl276\slmult1 References:\par
+{{\field{\*\fldinst{HYPERLINK https://spark.apache.org/docs/latest/sql-getting-started.html#global-temporary-view }}{\fldrslt{https://spark.apache.org/docs/latest/sql-getting-started.html#global-temporary-view\ul0\cf0}}}}\f0\fs22\par
+{{\field{\*\fldinst{HYPERLINK https://learn.microsoft.com/en-us/answers/questions/833026/azure-databricks-materialized-views }}{\fldrslt{https://learn.microsoft.com/en-us/answers/questions/833026/azure-databricks-materialized-views\ul0\cf0}}}}\f0\fs22\par
+\par
+Q8. Domain: ELT with Spark SQL and Python\par
+A data analyst has been given a task to find out the count of positive signals associated with each unique event from a static batch of signal data.\par
+He has received a small sample table named signal. The table consists of the following schema:\par
+'signal_id BIGINT,event_id INT,signal_code TINYINT'\par
+signal_id represents a unique id for each entry of the table.\par
+event_id represents the id of an event associated with the signal. These events might repeat with positive or negative signals.\par
+signal_code represents the type of signal.\par
+Value of the signal_code column can either be 0, which means a negative signal Or it can be 1, which represents a positive signal.\par
+The output should contain 2 columns - event_id and signal_count.\par
+If there is no positive signal, the count of the signal associated with the corresponding event should be displayed as 0.\par
+Which of the following queries should the data analyst write to find the desired result?\par
+A. select event_id, count(signal_code) as signal_count from signal where signal_code=1 group by event_id\par
+B. select event_id, sum(signal_code) as signal_count from signal group by event_id\par
+C. select event_id, count(signal_code) as signal_count from signal group by event_id\par
+D. select event_id,sum(signal_code) as signal_count from signal where signal_code=1 group by event_id\par
+\par
+Explanation:\par
+Correct Answer: B\par
+The key problem statements to focus on finding the solution are 'count of positive signals of each unique event' and 'If there is no positive signal, the count of the signal associated\par
+with the corresponding event should be displayed as 0.'\par
+Let us take an example of an event_id that has appeared only once in the dataset with a signal_code valued as 0, i.e., having a negative signal. As per the second key statement, we\par
+also need to retain those event_id in the output, which only has negative signal codes. And since they do not have positive signal_code, the value of the corresponding signal_count\par
+should be 0. The count function will not check any underlying value. As long as there is a value, even if it is 0, the count will produce 1, which is incorrect as per the problem statement.\par
+Also, if we filter the signal_code with 1, it will eliminate all the signal IDs with negative signals, and we will not get the desired result.\par
+For option B, the query simply performs a sum on the signal_code without filtering any value. Since the value under signal_code can either be 1 or 0, the sum function will act as the count function here to find out all the positive signal_code. At the same time, for signal IDs with all negative signal codes, Sum will simply add all the 0s and produce 0 - which will yield the desired result.\par
+Option A is incorrect. Filtering signal_code will eliminate the signal IDs with only negative signal codes. The count will produce the correct result for the rest of the signal IDs.\par
+Option B is correct. There are only two possible values in signal_code column-1 and 0. Using aggregated function sum without filtering any row will add up all the 1s for signal IDs with positive signal codes. This will act as a count for positive signal codes. At the same time, for signal IDs with only negative or 0 values, all the Os will be added to produce the row with 0 as signal_count. This matches the problem statement.\par
+Option C is incorrect. Using aggregated function count grouping by event IDs will include all the negative signals, if any. In its signal_count output column, it will produce incorrect output.\par
+Option D is incorrect. Filtering signal_code will eliminate the signal IDs with only negative signal codes. The sum function will produce the correct result for the rest of the signal by adding all 1s.\par
+Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-groupby.html }}{\fldrslt{https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-groupby.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q9. Domain: Incremental Data Processing\par
+A Databricks streaming application has Autoloader enabled, running without setting any explicit trigger. The output dataset needs to be refreshed within half an hour. New event files continuously arrive at the landing storage location from the source. It has been noticed that the actual cost to run the job is exceeding the estimated budget. A senior Data Engineer has been given the responsibility to optimize the streaming job to minimize the cost and achieve the requirement while maintaining scalability. The Databricks runtime version currently being used in this project is 10.5.\par
+Which of the following possible solutions provided by the senior data engineer will be most appropriate, considering the cluster cold start time is negligible?\par
+A. Modify the query by adding.trigger(processingTime='30 minutes')\par
+B. Modify the query by adding.trigger(once=True) and Schedule the autoloader as batch job in Databricks jobs within 30 minutes interval\par
+C. Modify the query by adding.trigger(availableNow=True) and Schedule the autoloader as batch job in Databricks jobs within 30 minutes interval\par
+D. Modify the query by adding .trigger(continuous='30 minutes')\par
+\par
+Explanation:\par
+Correct Answer: C\par
+There was no Trigger set in the query to begin with, which refers to the streaming query running with a default trigger (No Trigger). The default trigger runs the micro-batches as soon as it can, owing to making the cluster up all the time and making the cost exceed the threshold budget.\par
+The requirement given here will be sufficient if the query runs in a 30-minute interval. The 'Available Now' trigger is the most appropriate since it fulfils all the given criteria. 'Available Now' triggers the process of all the data available before running the query and then stops the query. Although it works similarly to Trigger Once, it provides better scalability since the data within the scope will be processed in multiple smaller batches instead of all a single batch, unlike Trigger Once.\par
+So, using the available Now trigger in autoloader and scheduling the query as a batch job within a 30-minute interval will minimize the cost, make the query scalable and fulfil the latency requirement.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Processing Time trigger is a fixed interval micro-batch, here set to be run at a 30-minute interval. When there is no data to be processed, the trigger will wait to be kicked off for the next interval. If the previous batch is not complete within 30 minutes, it will wait for the previous batch to complete and will start running the next batch as soon as the previous batch completes. In both cases, this trigger will make the cluster up and running all the time, making it a costly choice.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. Trigger once processes all the available data at once and then stops the query. The issue with this choice is scalability. Since it processes all the data in a single batch at once, it does not scale well with a significantly large dataset.\par
+{\pntext\f1\'B7\tab}Option C is correct. Similar to Trigger Once, the Available Now trigger also processes all the data available before running the query and then stops the query. But unlike Trigger Once, the 'Available Now' trigger processes the data in multiple batches instead of one single batch. Scheduling this as a batch job with a 30-minute interval will be the most appropriate choice for the provided criteria.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. A continuous processing trigger is an experimental trigger that enables very low (~1 MS) end-to-end latency. It is similar to the ProcessingTime trigger in terms of fixed processing intervals and continuously keeping the cluster up and running, making it a costly choice. Unlike the 'processingTime' trigger, which provides exactly once semantics, it provides at least once fault tolerance semantics, making it an unstable choice without the existence of an explicit code stabilizer where exactly once fault tolerance is required.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/ingestion/auto-loader/production.html# }}{\fldrslt{https://docs.databricks.com/ingestion/auto-loader/production.html#\ul0\cf0}}}}\f0\fs22\par
+\par
+Q10. Domain: Incremental Data Processing\par
+Which of the following describes the relationship between silver tables and bronze tables?\par
+A. Silver tables contain more aggregated data than bronze table.\par
+B. Silver tables contain more data than bronze table.\par
+C. Silver tables contain cleaner data than bronze table.\par
+D. Silver tables contain fewer data than bronze table.\par
+\par
+Explanation:\par
+Correct Answer: C\par
+Databricks follow a data design pattern called medallion architecture. This is to organize the data in the lakehouse logically to progressively and incrementally improve the quality and structure of the data flowing from a different layer. There are 3 different layers in this architecture- bronze, silver, and gold layer tables.\par
+Bronze is the first layer of tables in Medallion architecture, whose primary goal is to land all the data from the source system as-is. It comprises schema mimicking the source system to preserve all the data without any modification. Along with the as-is source data, it adds up the load date, insert or update date, process ID, identity columns, etc. This layer mainly takes care of slowly changing dimensions and changing data capture mechanisms.\par
+While transitioning from Bronze to Silver, data from bronze layer tables are transformed, cleansed, merged, derived, and normalized. Data is also validated and de-duplicated in this layer. This layer provides the first draft of the enterprise view of the data, which is further curated by applying various business-level logic and aggregation in the next layer, i.e., in the\par
+gold layer.\par
+Hence, the Silver table contains cleaner data than bronze tables as part of the cleansing process.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Aggregation as part of the data transformation process is applied primarily in the gold layer.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. Data from the Bronze layer undergoes several transformations in the silver layer, which include adding derived columns or removing unwanted rows and columns as part of silver layer transformation. We cannot quantify the difference in the volume of data between the two layers.\par
+{\pntext\f1\'B7\tab}Option C is correct. While moving the data from the bronze layer to the silver layer to incrementally improve the quality of data, it goes through various processes. Cleansing the data to present it in a more consumable form is certainly a major part of it. Hence, the Silver layer table contains cleaner data than the bronze version of the same.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. Data from the bronze layer undergoes several transformations in the silver layer, which include adding derived columns or removing unwanted rows and columns as part of silver layer transformation. We cannot quantify the difference in the volume of data between the two layers.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/lakehouse/medallion.html }}{\fldrslt{https://docs.databricks.com/lakehouse/medallion.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q11. Domain: Incremental Data Processing\par
+Which of the following Autoloader code block will start loading CSV files from an input folder and load data in the location of a delta table called products while segregating all the unexpected fields and rows with data type mismatches in a separate location called'_rescued_data'?\par
+A.  spark.readStream .format("autoLoader") .option("autoLoader.format",csv) .option("autoLoader.schemaLocation",checkpoint_path) .option("rescuedDataColumn", "_rescued_data") .load("/input/source/directory/") .writeStream .option("checkpointLocation", checkpoint_path) .option("path","path/to/retaildb/table/products") start(\par
+B. spark.readStream .format("cloudFiles") .option("cloudFiles.schemaEvolutionMode", "none") .option("rescuedDataColumn","_rescued_data") .csv("/input/source/directory/").writeStream .option("checkpointLocation", checkpoint_path) .table("path/to/retaildb/table/products")\par
+C. spark.readStream .format("cloudFiles") .option("cloudFiles.format",csv) .option("cloudFiles.schemaLocation",checkpoint_path) .option("cloudFiles.schemaEvolutionMode", "rescue") .load("/input/source/directory/") .writeStream .option("checkpointLocation", checkpoint_path) .start("path/to/retaildb/table/products")\par
+D. spark.readStream .format("cloudFiles") .option("cloudFiles.format",binaryFile) .option("cloudFiles.schemaLocation",checkpoint_path) .option("cloudFiles.schemaEvolutionMode", "rescue") .csv("/input/source/directory/") .writeStream .option("checkpointLocation", checkpoint_path) .table("path/to/retaildb/table/products")\par
+\par
+Explanation:\par
+Correct Answer: C\par
+Autoloader is a feature provided by Databricks to load and process new data files incrementally from a cloud storage location as they arrive.\par
+The readStream format needs to be set as cloudFiles for Autoloader to work. We can arrange various properties under cloudFiles as options. Among them, the most important option is to set the actual format of the files to be consumed by Autoloader. Generally, the schema should be located in the checkpoint path location. The code block in option C follows the correct convention and option, which can be successfully used to cater to the requirement.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Here, instead of cloudFiles as the format, Autoloader has been used, which is not a valid format. Also, instead of "autoLoader.format" and "autoLoader.schemaLocation", it should be "cloudFiles.format" and "cloudFiles.schemaLocation"\par
+{\pntext\f1\'B7\tab}Option B is incorrect. Here, a crucial code block which is an option("cloudFiles.format",csv), is missing which depicts what kind of file format to deal with using Autoloader. This option in Autoloader cannot be compensated by csv("input/file/path"). Also, there is no schema location or actual schema given against which the mismatched schema segregation will happen. Finally, when the sink is a directory path, it needs to be set either inside the start() method or in .option("path", "sink path") followed by an empty start() method. Here, the table() method has been used, which is wrong.\par
+{\pntext\f1\'B7\tab}Option C is correct. As given in the explanation, this option provides the syntactically correct option to load CSV data using Autoloader into a location stream while collecting bad records, i.e., records with mismatched schema or data type to a location '_rescued_data'. Hence, this is the correct answer.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. Here cloudFiles format has been given as binaryFile. binaryFiles are used to read unstructured data through Autoloader like images, videos, etc. Further, the csv() method has been used in conjunction with binaryFile as cloudFile format. This will result in a syntax error. Finally, when the sink is a directory path, it needs to be set either inside the start() method or in .option("path", "sink path") followed by an empty start() method. Here, the table() method has been used, which is wrong.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/ingestion/auto-loader/schema.html#what-is-the-rescued-data-column }}{\fldrslt{https://docs.databricks.com/ingestion/auto-loader/schema.html#what-is-the-rescued-data-column\ul0\cf0}}}}\f0\fs22\par
+\par
+Q12. Domain: Incremental Data Processing\par
+Which of the following statement is false about joining between streaming and static datasets in spark streaming queries?\par
+A. Spark structured streaming supports right outer join while joining a static dataset with another static dataset.\par
+B. Spark structured streaming supports right outer join while joining a static dataset with a streaming dataset.\par
+C. Spark structured streaming supports right outer join while joining a streaming dataset with another streaming dataset.\par
+D. Spark structured streaming supports right outer join while joining a streaming dataset with a static dataset.\par
+\par
+Explanation:\par
+Correct Answer: D\par
+Spark Structure streaming supports various kinds of joins like inner join, left outer join, right outer join, full outer join, etc. While joining between two sets of data where both are static datasets, spark streaming supports all possible kinds of joins without determining anything further. When the join is performed between two streaming datasets, all sorts of joins are supported as long as the watermarking is present and properly positioned.\par
+While joining between a static and a streaming dataset, the position of the streaming dataset determines the types of support joins. If the streaming dataset is positioned right, the streaming join will support the right outer join but not the left outer join and vice versa. In both cases, the inner join will be supported, and the full outer join will not be supported. As per the statement in option D, joining a streaming dataset with a static dataset means the streaming dataset is positioned at the left, which will support the left outer join but not the right outer join. Hence, the statement is false, which makes it the correct answer.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Spark streaming supports all kinds of joins, including right outer join, while join is performed between two static datasets. The statement in this option is valid.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. As per this statement, joining a static dataset with a streaming dataset means the streaming dataset Is positioned right. While joining between a static and streaming dataset in spark streaming join, it supports the right outer join if the streaming dataset is situated at the right. Hence, the statement is valid.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. Between two streaming datasets join, spark streaming conditionally supports all kinds of joins including right outer join, if the watermarking is specified in its proper position according to the join type. Hence, the statement is valid.\par
+{\pntext\f1\'B7\tab}Option D is Correct. As per this statement, joining a streaming dataset with a static dataset means the static dataset is positioned right. While joining between a static and streaming dataset in spark streaming join, it supports the right outer join if the streaming dataset is situated at the right. Hence, this is a false statement.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#support-matrix-for-joins-in-streaming-queries }}{\fldrslt{https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#support-matrix-for-joins-in-streaming-queries\ul0\cf0}}}}\f0\fs22\par
+\par
+Q13. Domain: Production Pipelines\par
+A data engineer has a multi-task job consisting of four dependent tasks. It has been scheduled to be run in Databricks Jobs every night during off-peak hours. One morning, he discovered that the Job run failed partially, leading to an unsuccessful run. Due to the failure of one of the intermediate tasks, the dependent tasks were skipped.\par
+Which of the following statements is true regarding what the data engineer should perform to complete the job execution?\par
+A. Since the partial failure of a multi-task job run will make every task in the job roll back, the data engineer should rerun the full job by using the Run Now button.\par
+B. Since the tasks executed successfully in a partially failed multi-task job run will be committed, the data engineer should repair the unsuccessful runs by clicking Repair run from the Jobs tab.\par
+C. Since the tasks executed successfully in a partially failed multi-task job run will be committed, the data engineer should repair the unsuccessful runs by clicking Repair run from the runs tab.\par
+D. Since the Repair run feature works for only single-task jobs, the data engineer should rerun the full job by using the Run Now button.\par
+\par
+Expianation:\par
+Correct Answer: C\par
+In a multi-task jobs setting, a job can fail due to partial failure of execution of dependent tasks. That means when some tasks in that multi-task job environment get successfully executed, another task fails, which leads to skipping execution for the dependent tasks. In such cases, the failed and skipped tasks from the unsuccessful job run can be repaired instead of running the full job again. \par
+Because the successfully executed tasks will be committed and may not need to be run again. This is called the Repair run feature of Databricks jobs. This feature comes in handy to quickly execute partially failed job runs. The Repair run feature is only available for a multi-task job setup. It doesn't work when a job consists of a single task. The Repair run feature can be accessed from the Runs tab. The runs tab consists of links for active runs and completed runs, which will include all successful and unsuccessful runs. We can click the unsuccessful runs link and then click on Repair run.\par
+Upon clicking, a Repair job run dialog will appear which can be used to overwrite the job parameters for the repair run. As per option C, the first part and the second part of the statement hold true, as explained above.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. As per the first part of the statement, the partial failure of a multi-task job run will make every task in the job roll back. This is not true because the tasks managed to be run successfully in a partially successful job run will be committed and not rolled back. So, there is no need to re-run the entire job manually by clicking the Run Now button.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. Although it looks similar to Option C, the problem lies within the second part of the statement. The Repair run button exists directly under the Runs tab, not under the Jobs sidebar.\par
+{\pntext\f1\'B7\tab}Option C is correct. As per the first part of the statement, tasks executed successfully in a partially failed multi-task job run will be committed. Which is a correct statement. As for the second part of the statement, partially failed unsuccessful multi-task job runs can be repaired by using the repair run button from the runs tab. Which is also true.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. It has been stated in this option that the Repair run feature works only for single-task jobs. It is a false statement. The truth is that the Repair run feature works only for multi-task jobs, but not for single-task jobs.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/workflows/jobs/jobs.html#repair-an-unsuccessful-job-run }}{\fldrslt{https://docs.databricks.com/workflows/jobs/jobs.html#repair-an-unsuccessful-job-run\ul0\cf0}}}}\f0\fs22\par
+\par
+Q14: Production Pipelines\par
+A data engineering team is exploring the Delta Live Tables framework of Databricks for building the data processing pipelines for their project. The team deals with both reference tables and streaming Data on a daily basis.\par
+As per the project requirement, all the reference tables need to be refreshed to show the present state of the input data sources. For Streaming data, new rows should be appended to the streaming table along with existing data. The team also needs to enforce data quality controls on the tables in the Delta Live Tables pipeline.\par
+Which of the following actions should the data engineering team take while creating the pipeline?\par
+A. The team needs to use the DLT Pro Product Edition while creating the Delta Live Tables. Once the pipeline is created, they should use the update type as refresh all.\par
+B. The team needs to use the DLT Advanced Product Edition while creating the Delta Live Tables. Once the pipeline is created, they should use the update type as refresh all.\par
+C. The team needs to use the DLT Pro Product Edition while creating the Delta Live Tables. Once the pipeline is created, they should use the update type as full refresh all.\par
+D. The team needs to use the DLT Advanced Product Edition while creating the Delta Live Tables. Once the pipeline is created, they should use the update type as full refresh all.\par
+\par
+Explanation:\par
+Correct Answer: B\par
+There are 4 types of update types available in the delta live table. These are 'refresh all', full refresh all, refresh selection, and full refresh selection. Refresh all update type overwrites the live tables and appends new rows to the streaming live table. Whereas, full refresh all overwrites the live tables and attempts to perform overwrite on streaming live tables as well.\par
+Here, the reference table falls under the live table, and streaming data is categorized as the streaming live table. Refresh all is suiting the data update criteria of the project. For the second requirement, tables need to have the ability to set data quality control. This means a proper product edition needs to be chosen which will support DLT expectations. In Delta Live Tables, 3 types of Product editions are available to choose from - DLT Core, DLT Pro, and DLT Advanced. Among these, only the DLT advanced Product edition provides the ability to set up DLT expectations.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. Refresh all update types to fulfill the data update requirement of the project. However, the DLT Pro Product edition does not come with the ability to enforce Data Quality Control i.e., DLT expectations.\par
+{\pntext\f1\'B7\tab}Option B is correct. DLT Advanced product edition comes with the ability to enforce Data Quality Control i.e., DLT expectations. Refresh all update types to fulfill the data update requirement of the project. Both actions fulfill the project requirement.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. DLT Pro Product edition does not come with the ability to enforce Data Quality Control i.e., DLT expectations. Full refresh all overwrites the live tables and attempts to perform overwrite on streaming live tables as well.\par
+{\pntext\f1\'B7\tab}Option D is incorrect. DLT Advanced product edition comes with the ability to enforce Data Quality Control i.e., DLT expectations. But full refresh all overwrites the live tables and attempts to perform overwrite on streaming live tables as well.\par
+
+\pard\sa200\sl276\slmult1 Reference:\par
+{{\field{\*\fldinst{HYPERLINK https://docs.databricks.com/workflows/delta-live-tables/delta-live-tables-concepts.html }}{\fldrslt{https://docs.databricks.com/workflows/delta-live-tables/delta-live-tables-concepts.html\ul0\cf0}}}}\f0\fs22\par
+\par
+Q15. Domain: Data Governance\par
+A new data analytics group has started working on an existing project. They need to access the database 'sales' so that they can create the sales forecast view by accessing existing tables from the database. The team has been included in a group called 'analysts'.\par
+A metastore Admin has been assigned the task of providing the team with the relevant permission to access the entire database. Which of the following Data Control command should the metastore admin run to achieve the purpose with the minimum viable level of permission?\par
+A. GRANT ALL PRIVILEGES ON DATABASE sales TO analysts\par
+B. GRANT SELECT ON SCHEMA sales to analysts\par
+C. GRANT USAGE ON TABLE sales_forecast to analysts\par
+D. GRANT USAGE ON SCHEMA sales to analysts\par
+\par
+Explanation:\par
+Correct Answer: D\par
+The GRANT command is a control statement as part of the Databricks Unity catalogue, which provides a certain privilege on data objects to an individual or groups. In the problem statement, the analysts' group needs to be provided with the bare minimum access to the database so that they can access the database sales. \par
+To access the underlying tables of the sales database, the analyst group must have USAGE permission on the database level followed by specific access related to tables. In this problem statement, we need to focus on DATABASE or SCHEMA-level access. Here, option D provides the correct command to give the sales group appropriate minimal permission. Note, DATABASE, and SCHEMA both can be used interchangeably as both are pointing towards the same.\par
+
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li360\sa200\sl276\slmult1 Option A is incorrect. ALL PRIVILEGES provides the group with all sorts of privileges including select, create, modify, usage,read_metadata, etc. The analysts' group can do more than just access the database with this access privilege. Hence, it is not a viable option.\par
+{\pntext\f1\'B7\tab}Option B is incorrect. To give access to a specific schema or database, the group or individual must have USAGE access. Hence, this is an invalid option for the use case.\par
+{\pntext\f1\'B7\tab}Option C is incorrect. Here, no table named sales_forcast has been mentioned in the problem statement. Also, the objective is to provide appropriate permission on the Database or Schema level, not the table level. Hence, this is an invalid option for the use case.\par
+{\pntext\f1\'B7\tab}Option D is correct. USAGE is the minimum and most appropriate option to be granted to a group on a schema or database level to access the database. Hence, this is the most suitable option that goes with the use case.\par
+}
+ 
