@@ -241,6 +241,20 @@ Microsoft does not provide a public API or PowerShell command that returns every
 Conclusion:
 The full list of resource types can only be manually obtained from the Azure documentation and from Azure-specific tools like the Resource Explorer. If you need to track or manage these resource types in your environment, keeping an eye on official documentation and using Azure tools like ARM templates is the most effective approach.
 
+Here's a brief summary of the supporting comments for the key Azure Data Factory resources required for data processing orchestration:
+
+Factories: Central resource for managing and orchestrating data pipelines, workflows, and integration.
+Dataflows: Used for transforming data with a visual interface for complex data transformations.
+Pipelines: Defines a series of data movement and transformation activities in a workflow.
+Datasets: Represents data structures (e.g., tables, files) that are used in data movement and transformation.
+Linked Services: Defines connections to external data sources (e.g., databases, storage accounts) for data access.
+Integration Runtimes: Provides the compute environment for executing data movement and transformation activities.
+Triggers: Automates pipeline execution based on specific schedules or events.
+Global Parameters: Defines reusable variables for consistency across pipelines and datasets.
+Credentials: Stores authentication details securely for accessing data sources.
+Managed Virtual Networks: Ensures secure and isolated network environments for data processing.
+These resources collectively enable efficient orchestration, data transformation, and movement across various data environments in Azure Data Factory.
+
 
 
 
