@@ -1,0 +1,53 @@
+import msal
+from cryptography.hazmat.primitives.serialization import pkcs12
+from cryptography.hazmat.backends import default_backend
+
+# ---------- CONFIGURATION ----------
+tenant_id = "your-tenant-id"
+client_id = "your-client-id"
+cert_path = "path/to/your/certificate.pfx"   # or .pem
+cert_password = b"your-cert-password"        # must be in bytes
+scope = ["https://<function-app-name>.azurewebsites.net/.default"]
+authority = f"https://login.microsoftonline.com/{tenant_id}"
+
+# ---------- LOAD CERTIFICATE ----------
+def load_private_key_and_thumbprint(pfx_path, pfx_password):
+    with open(pfx_path, 'rb') as f:
+        pfx_data = f.read()
+
+    private_key, certificate, _ = pkcs12.load_key_and_certificates(
+        pfx_data,
+        pfx_password,
+        backend=default_backend()
+    )
+
+    # Get SHA-1 thumbprint (hex)
+    thumbprint = certificate.fingerprint(cert_hash_algorithm=certificate.signature_hash_algorithm)
+    x5t = thumbprint.hex()
+
+    # Convert private key to PEM bytes
+    private_key_pem = private_key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption()
+    )
+
+    return private_key_pem.decode('utf-8'), x5t
+
+# ---------- MAIN AUTHENTICATION ----------
+from cryptography.hazmat.primitives import serialization
+
+private_key, thumbprint = load_private_key_and_thumbprint(cert_path, cert_password)
+
+app = msal.ConfidentialClientApplication(
+    client_id,
+    authority=authority,
+    client_credential={"private_key": private_key, "thumbprint": thumbprint}
+)
+
+result = app.acquire_token_for_client(scopes=scope)
+
+if "access_token" in result:
+    print("Access Token:\n", result["access_token"])
+else:
+    print("Failed to get token:\n", result.get("error_description", result))
